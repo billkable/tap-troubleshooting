@@ -577,7 +577,7 @@ Runtime.
 The k6s script is as follows - you can run it from the command line,
 or import and run it on k6s cloud runner:
 
-```json
+```javascript
 import { sleep, check } from "k6";
 import http from "k6/http";
 
@@ -741,11 +741,11 @@ similar to the initial workload creation.
 Once the deployment is complete,
 verify:
 
--   Deployment 00002 is running
+-   Revision Deployment 00002 is running
 -   The new default message from the Cloud Native Runtime endpoint
 -   No (or minimal errors) from the load test output
--   Deployment 00001 will terminate after a couple of minutes following
-    deployment 00002 running
+-   Revision Deployment 00001 will terminate after a couple of minutes following
+    Revision deployment 00002 running
 
 You just completed a zero downtime CI and CD cycle!
 
@@ -762,9 +762,9 @@ tanzu apps workload update tal-tracker \
 ```
 
 Watch for the config writer to update the runtime configuration,
-as well as generation of CNR revision 00003.
+as well as generation of CNR Revision 00003.
 
-revision 00002 should terminate after a minute or two,
+Revision 00002 should terminate after a minute or two,
 and there should be no (or minimal) errors during the load test.
 
 Also review the latest push to the
@@ -798,7 +798,7 @@ Make the environment specification look like the following:
 and commit/push your changes.
 
 You will notice there is no activity in the supply chain -
-but you will see Cloud Native Runtime deploys the next revision 0004.
+but you will see Cloud Native Runtime deploys the next Revision 0004.
 
 You made a desired state change directly in the Delivery state in the
 associated repository,

@@ -28,6 +28,23 @@ update, and monitoring:
     -   Make a code change, integrate to mainline and watch the supply
         chain test, build and deploy it.
 
+## Prerequisites
+
+-   Available TAP Beta 4 (0.4.0) installed and configured
+    (either Development or Full profiles)
+
+-   Developer workstation with following tools:
+    - `kubectl`, `krew` and `tree` plugins
+    - `kapp`
+    - `kn`
+    - `k6` (optional for local load testing)
+
+Ideally workstation is MacOSX, Linux, or Windows with WSL.
+
+"Best Before Date":
+This workshop is likely not to work as-is on Beta 5
+or later, use at your own risk.
+
 ## Prepare a workload for GitOps
 
 You need to prepare for a workload:

@@ -561,9 +561,9 @@ You will see this in action in upcoming steps.
 Now that you have a workload deployed and running,
 run some load against it with a load test tool.
 
-In this lesson the author uses [k6s](https://k6s.io),
+In this lesson the author uses [k6](https://k6.io),
 either from local command line,
-or from the [k6s Cloud Runner](https://app.k6.io/account/login)
+or from the [k6 Cloud Runner](https://app.k6.io/account/login)
 
 ### Sample load test script
 
@@ -574,8 +574,8 @@ The idea is to run continuous load while completing the remaining
 exercises to demonstrate the zero-downtime capabilities of Cloud Native
 Runtime.
 
-The k6s script is as follows - you can run it from the command line,
-or import and run it on k6s cloud runner:
+The k6 script is as follows - you can run it from the command line,
+or import and run it on k6 cloud runner:
 
 ```javascript
 import { sleep, check } from "k6";
@@ -612,7 +612,7 @@ export default function main() {
 ### Running the load test
 
 If you choose to run locally,
-[install k6s cli](https://k6.io/docs/getting-started/installation/),
+[install k6 cli](https://k6.io/docs/getting-started/installation/),
 save the load test script locally as `tal-tracker-load-test.json` and
 run as follows:
 

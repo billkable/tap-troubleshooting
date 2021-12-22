@@ -1,0 +1,66 @@
+profile: full
+
+ceip_policy_disclosed: true
+
+cnrs:
+  ingress:
+    reuse_crds: true
+    external:
+      namespace: tanzu-system-ingress
+    internal:
+      namespace: tanzu-system-ingress
+  domain_name: apps.{{DOMAIN}}
+
+contour:
+  infrastructure_provider: aws
+  envoy:
+    service:
+      aws:
+        LBType: classic
+
+buildservice:
+  tanzunet_username: {{TN_USERNAME}}}
+  tanzunet_password: {{TN_PASSWORD}}
+  kp_default_repository: ghcr.io/{{GITHUB_USER}}/build-service
+  kp_default_repository_username: {{GITHUB_USER}}
+  kp_default_repository_password: |-
+    {{GITHUB_PAT}}
+
+appliveview:
+  connector_namespaces: [default]
+  service_type: LoadBalancer
+
+image_policy_webhook:
+  allow_unmatched_images: true
+
+tap_gui:
+  namespace: tap-gui
+  service_type: LoadBalancer
+  app_config:
+    app:
+      baseUrl: http://ui.{{DOMAIN}}:7000
+
+    catalog:
+      locations:
+        - type: url
+          target: https://github.com/{{GITHUB_USER}}/tap-gui-catalog/blob/main/catalog-info.yaml
+    backend:
+        baseUrl: http://ui.{{DOMAIN}}:7000
+        cors:
+            origin: http://ui.{{DOMAIN}}:7000
+
+supply_chain: testing
+
+ootb_supply_chain_testing:
+  service_account: default
+  registry:
+    server: ghcr.io
+    repository: {{GITHUB_USER}}
+
+accelerator:
+  server:
+    service_type: LoadBalancer
+    watched_namespace: "default"
+
+learningcenter:
+  ingressDomain: learn.{{DOMAIN}}

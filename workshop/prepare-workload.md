@@ -1,49 +1,6 @@
-# TAP Developers Workload Overview
+# Prepare workload
 
-TODO consider putting developer inner loop with Kind cluster
-and locally triggered workloads.
-
-## Overview
-
-In this workshop we will run you through a basic workload creation,
-update, and monitoring:
-
-1.  Generate a new application codebase and the source and delivery
-    repos from an accelerator.
-
-1.  Register the new application with TAP GUI.
-
-1.  Create and configure a TAP development namespace for CI and CD to
-    a review environment.
-
-1.  Generate a new workload configuration for the codebase.
-
-1.  Create the workload configuration, monitor the supply chain from
-    source to deployment.
-
-1.  Simulate managing a workload during "Day 2".
-    -   Observe it through TAP GUI.
-    -   Make an environment change, watch the reconfiguration and
-        Blue/Green deployment.
-    -   Make a code change, integrate to mainline and watch the supply
-        chain test, build and deploy it.
-
-## Prerequisites
-
-[Prequisites](./prereq)
-
-## Prepare a workload for Inner Loop Development
-
-You can run inner loop development exclusively on a local provider like
-Kind or Minikube,
-or,
-you can run it on the same cluster as other environments,
-such as review and production.
-
-Follow the [](#prepare-an-environment) section to set up a TAP K8s
-namespace to build, test, deploy and manage an environment.
-
-## Prepare a workload for CI/CD with GitOps
+## Prepare a workload
 
 You need to prepare for a workload:
 
@@ -58,12 +15,13 @@ You need to prepare for a workload:
 1.  Generate a source repository for the workload
     application.
 
-1.  Generate a delivery repository for the workload runtime.
+1.  Generate a delivery repository for the workload runtime
+    (if you are using GitOps).
 
-1.  Generate github secrets for GitRepository and (GitOps)
-    TaskRun (if applicable).
+1.  Generate github secrets for source and delivery (if applicable)
+    repositories.
 
-1.  Development namespace created with the following:
+1.  namespace created with the following:
     - build image registry credentials
     - service account with rbac and github secret reference
     - Tekton pipeline to test your application.
@@ -79,20 +37,21 @@ such as `~/workspace`.
 Generate a codebase using the `tanzu-java-web-app` accelerator:
 
 ```bash
-tanzu accelerator generate tanzu-java-web-app --server-url=<accelerator endpoint> --options '{"projectName":"tal-tracker", "repositoryPrefix":"<registry server and account>/tal-tracker"}'
+tanzu accelerator generate tanzu-java-web-app --server-url=<accelerator endpoint> --options '{"projectName":"<project name>", "repositoryPrefix":"<registry server and account>/<project name>"}'
 ```
 
-This will download a codebase in a zip file `tal-tracker.zip`.
+This will download a codebase in a zip file `<project name>.zip`.
 It is a spring boot app skeleton with a web controller,
 an associated API test,
 and a maven build system.
 
-Extract it in the workspace directory,
+Extract it in the workspace directory
 switch to it,
 and test it:
 
 ```bash
-cd ./tal-tracker
+tar xvf <project name>.zip .
+cd ./<project name>
 ./mvnw test
 ```
 
@@ -171,7 +130,7 @@ git push origin main
 
 Checkout the web interface for your remote to verify the push succeeded.
 
-### Generate Delivery Repository
+### Generate Delivery Repository (for GitOps)
 
 Create a remote repo on your provider of choice.
 (Github, Gitlab, Bitbucket are the most common).
@@ -188,26 +147,6 @@ the author uses Github,
 and creates and names the remote as follows:
 
 `https://github.com/billkable/tal-tracker-review-config`
-
-### Generate SSH Keys (if applicable for private repo)
-
-Follow this section if you are running private repositories,
-otherwise it is not required.
-
-#### Generate SSH keys for GitRepository
-
-1.  `ssh-keygen -t <algorithm>`
-
-    Where the `<algorithm>` is either `rsa` or `ed25519`.
-
-    Name the private key file `identity`.
-
-1.  Set a deploy key in the src github repo for the
-    public key generated, i.e. `identity.pub`.
-
-#### Generate known hosts for Github SSH
-
-`ssh-keyscan github.com > ./known_hosts`
 
 ## Register the workload component into TAP GUI
 
@@ -269,7 +208,6 @@ current context:
 kubectl create namespace tal-review
 kubectl config set-context --current --namespace tal-review
 ```
-
 
 ## Create a CI testing pipeline
 

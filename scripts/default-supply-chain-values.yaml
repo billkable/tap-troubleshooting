@@ -1,0 +1,4 @@
+---
+registry:
+  server: "ghcr.io"
+  repository: "{{GITHUB_USER}}/build-service"

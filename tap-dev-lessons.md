@@ -45,7 +45,14 @@ Ideally workstation is MacOSX, Linux, or Windows with WSL.
 This workshop is likely not to work as-is on Beta 5
 or later, use at your own risk.
 
-## Prepare a workload for GitOps
+## Prepare a workload for Inner Loop Development
+
+TODO:
+
+- Kind Cluster Setup
+- Remote Developer Namespace Setup (Basic Supply Chain)
+
+## Prepare a workload for CI/CD with GitOps
 
 You need to prepare for a workload:
 
@@ -686,6 +693,10 @@ tal-review    │ └─HTTPProxy/tal-tracker-contour-tal-tracker.tal-review.svc
 tal-review    └─Service/tal-tracker                                                       -              50m
 ```
 
+### App Live View
+
+TODO
+
 ## Update the codebase with a configurable welcome message
 
 ### Code change
@@ -766,7 +777,7 @@ verify:
 
 You just completed a zero downtime CI and CD cycle!
 
-## Update the runtime environment through the workload
+## Update the runtime environment
 
 Now update the message through the new WELCOME_MESSAGE environment
 variable.
@@ -789,38 +800,6 @@ Also review the latest push to the
 
 You should see the environment variable update in the
 `spec.container.env` entry for the `WELCOME_MESSAGE`.
-
-## Update the runtime environment through the Delivery
-
-You will update the
-[delivery configuration](https://github.com/billkable/tal-tracker-review-config/blob/main/config/delivery.yml)
-in the repository.
-
-You can clone the repo and make changes to the `WELCOME_MESSAGE`
-environment variable value, then commit and push the changes,
-or,
-you can make the changes and commit directly through the Github UI
-(assuming you are using Github).
-
-Make the environment specification look like the following:
-
-```yaml
-    spec:
-      containers:
-      - env:
-        - name: WELCOME_MESSAGE
-          value: Welcome from the TAP Room, part 2
-```
-
-and commit/push your changes.
-
-You will notice there is no activity in the supply chain -
-but you will see Cloud Native Runtime deploys the next Revision 0004.
-
-You made a desired state change directly in the Delivery state in the
-associated repository,
-and the ClusterDelivery reconciliation will make the active state
-equal to the new desired state via the new deployment.
 
 ## Wrapping up
 

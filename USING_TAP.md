@@ -2,7 +2,7 @@
 
 Product documentation link: <https://docs.vmware.com/en/VMware-Tanzu-Application-Platform/0.4/tap/GUID-overview.html>
 
-These exercises are meant to exercise various TAP features in the context of a [small Java Spring Boot 
+These exercises are meant to exercise various TAP features in the context of a [small Java Spring Boot
 application](https://github.com/sample-accelerators/tanzu-java-web-app.git).
 
 The examples are for a hypothetical setup with the following domains:
@@ -11,7 +11,7 @@ TAP GUI URL: <http://example.taproom.buzz:7000>
 Knative base domain: <example-apps.taproom.buzz>
 Learning Center domain: <example-learn.taproom.buzz>
 
-## Setup command line completion 
+## Setup command line completion
 
 This is optional, but some folks will find it really handy for using the `tanzu` CLI.
 If you use `bash`:
@@ -46,7 +46,7 @@ tanzu apps workload tail tanzu-java-webapp --since 10m --timestamp
 
 To monitor the process of the test and/or scan phases, look for a pod with a meaningful name, and `kubectl logs` it.
 
-## Get the workload info 
+## Get the workload info
 ```
 tanzu apps workload get tanzu-java-webapp
 ```
@@ -71,7 +71,7 @@ Workload Knative Services
 NAME                 READY   URL
 tanzu-java-web-app   Ready   http://tanzu-java-web-app.default.example-apps.taproom.buzz
 ```
-The output includes the URL, 
+The output includes the URL,
 
 ## Verify the app is accessible on the Internet
 
@@ -123,15 +123,15 @@ Apply the change:
 tanzu apps workload apply -f tanzu-java-web-app.yaml
 ```
 
-Again, use the `tail` command (above) to watch the Supply Chain execute. When it has finished successfully, 
-go to the App Live View, find the newly-deployed Pod, and observe that under Environment / systemProperties 
+Again, use the `tail` command (above) to watch the Supply Chain execute. When it has finished successfully,
+go to the App Live View, find the newly-deployed Pod, and observe that under Environment / systemProperties
 that the new env var is there.
 
 Also note tha the env vars are visible in the Containers pane (under the Live View pane)
 
 ## Deploy Workload to another environment
 _TODO_.
-e.g., dev, staging. 
+e.g., dev, staging.
 This might require us to define a new Supply Chain? Not sure what the TAP story is here.
 This is probably in the "App Ops" category in TAP's worldview.
 
@@ -150,8 +150,35 @@ _TODO_.
 
 ## Securing SpringBoot actuators
 _TODO_.
-Looks like ALV cannot do this yet: 
+Looks like ALV cannot do this yet:
 <https://vmware.slack.com/archives/C02D60T1ZDJ/p1639497937444600>
 
 ## Make a GIT repo private:
 <https://vmware.slack.com/archives/C02D60T1ZDJ/p1639754807110500?thread_ts=1639754477.109600&cid=C02D60T1ZDJ>
+
+## Creating SSH secrets for Github repos
+
+### Generate the key
+
+1.  `ssh-keygen -t <algorithm>`
+
+    Where the `<algorithm>` is either `rsa` or `ed25519`.
+
+    Name the private key file some known name,
+    i.e. `github-ssh-key`.
+
+1.  Set a deploy key in the target github repo for the public key
+    generated, i.e. `github-ssh-key.pub`.
+
+### Generate known hosts for Github
+
+`ssh-keyscan github.com > ./known_hosts`
+
+### Create the K8s secret
+
+```bash
+kubectl create secret generic git-ssh \
+  --from-file=./github-ssh-key \
+  --from-file=./github-ssh-key.pub \
+  --from-file=./known_hosts -n <namespace>
+```

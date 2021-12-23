@@ -5,7 +5,7 @@
 Developers using TAP may want to:
 
 1.  Bootstrap a product codebase from TAP accelerator
-1.  Setup or more TAP environments
+1.  Setup one or more TAP environments
 1.  Deploy a workload in dev environments for inner loop activities
 1.  Integrate with in CI/CD pipeline, resulting in a workload running in
     a target environment (review, testing, staging, production)
@@ -17,10 +17,8 @@ Developers using TAP may want to:
     -   integrating work to mainline,
         propagate through pipeline for target environment
     -   Documenting changes, features, etc
-
-Note that items 5, 6 and 7 are considered "Day 2" activities,
-and that they must consider continuous availability of the workload in
-the target environment (this may be review, staging, or production).
+1.  Integrate work in CI/CD pipeline, resulting in updated workload,
+    repeat from step 5.
 
 ## Bootstrapping a product and codebase
 

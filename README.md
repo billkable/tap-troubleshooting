@@ -1,18 +1,20 @@
-# TAP Troubleshooting
+# README
 
-## App Live View says `No live information for pod with id UUID`
+This project is a temporary ground for compilation of assessment
+materials for *Tanzu Application Platform (TAP)* usage scenarios by
+Tanzu Labs Engineers.
 
-Delete the live view connector (it'll get restarted automatically)
-```
-kubectl -n app-live-view delete pods -l=name=application-live-view-connector
-```
+The following are some resources:
 
-## I edit `tap-values.yaml`, apply it, but the change doesn't take effect
-
-If you installed the `tap` package, which transitively installs the package you are updating, then
-instead of applying directly to the package you are updating, you should apply to the `tap` package.
-
-For example: 
-```
-tanzu package installed update tap --package-name tap.tanzu.vmware.com --version 0.5.0-build.1 -f tap-values.yml -n tap-install
-```
+-   [Usage Stories](./usage-stories):
+    What outcomes would Tanzu Labs Engineers want from TAP?
+-   [Tips](./tips):
+    Miscellaneous tips related to TAP, its configuration and command
+    line usage
+-   [Troubleshooting](./troubleshooting):
+    Miscellaneous troubleshooting tips
+-   [Scripts](./scripts):
+    Miscellaneous scripts to support in-band, or out of band tasks with
+    TAP
+-   [Workshop](./workshop):
+    Take a Labs Engineer on a tour of TAP through its most common uses.

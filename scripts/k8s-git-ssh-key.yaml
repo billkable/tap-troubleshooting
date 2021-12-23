@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: git-ssh
+  annotations:
+    tekton.dev/git-0: github.com  # git server host
+type: kubernetes.io/ssh-auth
+stringData:
+  ssh-privatekey: string          # private key with push-permissions
+  known_hosts: string             # git server public keys
+  identity: string                # private key with pull permissions
+  identity.pub: string            # public of the `identity` private key

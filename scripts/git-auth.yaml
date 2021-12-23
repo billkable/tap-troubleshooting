@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: git-auth
+  annotations:
+    tekton.dev/git-0: https://github.com # set according to provider url
+type: kubernetes.io/basic-auth
+stringData:
+  username: <git user name>
+  password: <git password or token>

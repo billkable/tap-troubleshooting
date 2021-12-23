@@ -56,8 +56,6 @@ Developers using TAP may want to:
     - configure labels for supply chain
     - configure label for backstage component
 
-
-
 ## Deploy Inner loop workloads
 
 -   Developer can deploy workloads for development purposes before

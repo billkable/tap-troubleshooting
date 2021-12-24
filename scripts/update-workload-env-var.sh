@@ -2,7 +2,7 @@
 
 # parameter descriptions
 #
-# - <component name> is the workload name and the same as the
+# - $COMPONENT_NAME is the workload name and the same as the
 #   component name associated with generated accelerator project,
 #   and registered with TAP GUI.
 #
@@ -10,5 +10,5 @@
 #
 # - <env var value> is the environment variable value
 
-tanzu apps workload update <component name> \
+tanzu apps workload update $COMPONENT_NAME \
     --env "<env var>=<env var value>"

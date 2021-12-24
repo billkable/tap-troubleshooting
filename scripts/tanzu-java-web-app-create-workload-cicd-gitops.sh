@@ -2,7 +2,7 @@
 
 # parameter descriptions
 #
-# - <component name> is the name associated with your workload component
+# - $COMPONENT_NAME is the name associated with your workload component
 #   bootstrapped from the accelerator.
 #   It will be set as the `part-of` annotation used by TAP GUI to select
 #   it for runtime resource visualization.

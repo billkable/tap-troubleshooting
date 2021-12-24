@@ -2,16 +2,16 @@
 
 # parameter descriptions
 #
-# - <algorithm> key generation algorithm,
+# - $ALGORITHM key generation algorithm,
 #   pick either `rsa` or `ed25519`
 #
-# - <output key file> is the file name of the private key that will be
+# - $OUTPUT_KEY_FILE is the file name of the private key that will be
 #   generated, as well as the public key with the name
-#   `<output key file>.pub`
+#   `$OUTPUT_KEY_FILE.pub`
 #
-# - <git provider> is the hostname of the provider,
+# - $GIT_PROVIDER is the hostname of the provider,
 #   For github: `github.com`
 #
 
-ssh-keygen -t <algorithm> -f <output key file> -q -N ""
-ssh-keyscan <git provider> > known_hosts
+ssh-keygen -t $ALGORITHM -f $OUTPUT_KEY_FILE -q -N ""
+ssh-keyscan $GIT_PROVIDER > known_hosts

@@ -2,12 +2,14 @@
 
 # parameter descriptions
 #
-# - <component name> is the name associated with your workload component
+# - $ACCELERATOR_ENDPOINT is the URL endpoint for the TAP accelerator
+#
+# - $COMPONENT_NAME is the name associated with your workload component
 #   bootstrapped from the accelerator.
 #   It will be set as the `part-of` annotation used by TAP GUI to select
 #   it for runtime resource visualization.
 #
-# - <registry server> is the root URL endpoint for the chosen image
+# - $REGISTRY_SERVER is the root URL endpoint for the chosen image
 #   registy provider.
 #   Some examples:
 #
@@ -15,9 +17,9 @@
 #   - Google: gcr.io
 #   - Github: ghcr.io
 #
-# - <registry account> is the registry provider account
+# - $REGISTRY_ACCOUNT is the registry provider account
 
 
 tanzu accelerator generate tanzu-java-web-app \
-    --server-url=<accelerator endpoint>
-    --options '{"projectName":"<component-name>", "repositoryPrefix":"<registry server>/<registry account>/<component-name>"}'
+    --server-url=$ACCELERATOR_ENDPOINT
+    --options '{"projectName":"$COMPONENT_NAME", "repositoryPrefix":"$REGISTRY_SERVER/$REGISTRY_ACCOUNT/$COMPONENT_NAME"}'

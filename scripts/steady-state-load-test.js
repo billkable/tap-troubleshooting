@@ -21,7 +21,7 @@ export default function main() {
     let response;
 
     // Greeting
-    response = http.get("<TAL Tracker CNR Service ingress URL>");
+    response = http.get("$TAP_CNR_URL");
     check(response, {
     "status equals 200": response => response.status.toString() === "200",
     });

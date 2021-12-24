@@ -18,3 +18,12 @@ The following are some resources:
     TAP
 -   [Workshop](./workshop.md):
     Take a Labs Engineer on a tour of TAP through its most common uses.
+
+Some prospective collaboration directions to go with this:
+
+-   Live Fire Solutions team - potential use by Field Services / PSO
+-   Review with Labs Engineers for verification with their practices
+-   Review with TAP R&D Product Owners and Technical Marketing
+    Architects for intent and correctness
+-   Review with TAP Learning Center Product Owners for potential
+    product content ideas

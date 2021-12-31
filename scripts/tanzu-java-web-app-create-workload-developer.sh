@@ -18,13 +18,13 @@
 #
 # - $REGISTRY_ACCOUNT is the registry provider account
 #
-# - <image repo name> is the name of the image repo,
+# - $IMAGE_REPO_NAME is the name of the image repo,
 #   ideally should be the `$COMPONENT_NAME-src`
 #
 
 tanzu apps workload create $COMPONENT_NAME \
-  --local-path=.
-  ----source-image=$REGISTRY_SERVER/$REGISTRY_ACCOUNT/<image repo name>
+  --local-path=. \
+  --source-image=$REGISTRY_SERVER/$REGISTRY_ACCOUNT/$IMAGE_REPO_NAME \
   --type web \
   --label app.kubernetes.io/part-of=$COMPONENT_NAME \
   --label apps.tanzu.vmware.com/has-tests=false \

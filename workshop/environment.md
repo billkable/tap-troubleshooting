@@ -1,5 +1,14 @@
+# Prepare a TAP provided environment via namespace
 
-# Prepare a TAP provided environment
+The basic idea is that a team may have a dedicated TAP cluster,
+and may want to set up environments in separate namespaces.
+
+Each environment will have its own supply chain,
+potentially from source code,
+through delivery to a running workload on a k8s cluster.
+
+You can read the background
+[here](https://docs.vmware.com/en/Tanzu-Application-Platform/1.0/tap/GUID-scc-ootb-supply-chain-basic.html).
 
 ## Environment prerequisites
 

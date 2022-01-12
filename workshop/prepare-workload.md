@@ -257,12 +257,12 @@ done through the `tanzu apps workload` cli command:
 tanzu apps workload create tal-tracker \
   --git-repo https://github.com/billkable/tal-tracker.git \
   --git-branch main \
-  --param "delivery_git_branch=main" \
-  --param "delivery_git_commit_message=bump" \
-  --param "delivery_git_repository=https://github.com/billkable/tal-tracker-review-config.git" \
-  --param "delivery_git_user_email=bkable@gmail.com" \
-  --param "delivery_git_user_name=billkable" \
-  --param "delivery_git_ssh_secret=git-auth" \
+  --param "gitops_branch=main" \
+  --param "gitops_commit_message=bump" \
+  --param "gitops_repository=https://github.com/billkable/tal-tracker-review-config.git" \
+  --param "gitops_user_email=bkable@gmail.com" \
+  --param "gitops_user_name=billkable" \
+  --param "gitops_ssh_secret=git-auth" \
   --label apps.tanzu.vmware.com/has-tests=true \
   --label app.kubernetes.io/part-of=tal-tracker \
   --type web

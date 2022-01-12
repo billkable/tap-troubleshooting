@@ -22,12 +22,12 @@
 tanzu apps workload create <component-name> \
   --git-repo <source code git repository> \
   --git-branch main \
-  --param "delivery_git_branch=main" \
-  --param "delivery_git_commit_message=bump" \
-  --param "delivery_git_repository=<git delivery repository>" \
-  --param "delivery_git_user_email=<git email>" \
-  --param "delivery_git_user_name=<git user>" \
-  --param "delivery_git_ssh_secret=<k8s auth secret>" \
+  --param "gitops_branch=main" \
+  --param "gitops_commit_message=bump" \
+  --param "gitops_repository=<git delivery repository>" \
+  --param "gitops_user_email=<git email>" \
+  --param "gitops_user_name=<git user>" \
+  --param "gitops_ssh_secret=<k8s auth secret>" \
   --label apps.tanzu.vmware.com/has-tests=true \
   --label app.kubernetes.io/part-of=<component-name> \
   --type web

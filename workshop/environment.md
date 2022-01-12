@@ -50,6 +50,6 @@ Create the namespace:
 
 ## Set up environment resource access
 
-- [Setup Git credentials](./git-secrets)
-- [Setup image registry access](./registry-creds)
-- [Setup namespace service account access](./setup-environment-access)
+- [Setup Git credentials](./git-secrets.md)
+- [Setup image registry access](./registry-creds.md)
+- [Setup namespace service account access](./setup-environment-access.md)

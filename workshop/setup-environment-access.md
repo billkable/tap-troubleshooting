@@ -24,10 +24,10 @@ kind: ServiceAccount
 metadata:
   name: default
 secrets:
-  - name: registry-credentials
+  - name: image-secret
   - name: git-auth
 imagePullSecrets:
-  - name: registry-credentials
+  - name: image-secret
   - name: tap-registry
 
 ---
@@ -75,7 +75,7 @@ rules:
 - apiGroups: [services.apps.tanzu.vmware.com]
   resources: ['resourceclaims']
   verbs: ['*']
-- apiGroups: [scst-scan.apps.tanzu.vmware.com]
+- apiGroups: [scanning.apps.tanzu.vmware.com]
   resources: ['imagescans', 'sourcescans']
   verbs: ['*']
 

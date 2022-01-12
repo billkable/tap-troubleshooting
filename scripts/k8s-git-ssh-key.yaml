@@ -6,7 +6,7 @@ metadata:
     tekton.dev/git-0: github.com  # git server host
 type: kubernetes.io/ssh-auth
 stringData:
-  ssh-privatekey: $SSH_PRIVATE_KEY  # private key with push-permissions
+  ssh-privatekey: {{SSH_PRIVATE_KEY}}  # private key with push-permissions
   known_hosts: string               # git server public keys
-  identity: $SSH_PRIVATE_KEY        # private key with pull permissions
-  identity.pub: $SSH_PUBLIC_KEY     # public of the `identity` private key
+  identity: {{SSH_PRIVATE_KEY}}        # private key with pull permissions
+  identity.pub: {{SSH_PUBLIC_KEY}}     # public of the `identity` private key

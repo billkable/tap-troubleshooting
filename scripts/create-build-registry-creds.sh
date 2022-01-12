@@ -20,9 +20,8 @@
 #   target namespace.
 #
 
-tanzu secret registry add registry-credentials \
-    --server $REGISTRY_SERVER
-    --username $REGISTRY_ACCOUNT
-    --password $REGISTRY_ACCOUNT_PASSWORD
-    --namespace $TARGET_NAMESPACE
-    --export-to-all-namespaces
+tanzu secret registry add image-secret \
+  --server $REGISTRY_SERVER \
+  --username $REGISTRY_USERNAME \
+  --password $REGISTRY_PASSWORD \
+  --namespace $TARGET_NAMESPACE

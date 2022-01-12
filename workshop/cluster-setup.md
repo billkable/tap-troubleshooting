@@ -1,8 +1,5 @@
 # Cluster Setup
 
-<<<<<<< HEAD
-TODO
-=======
 This section outlines a sample installation of
 *Tanzu Application Platform* (TAP).
 
@@ -83,4 +80,3 @@ You have the following accounts:
 ## TAP full installation
 
 ## TAP OOB Basic Supply Chain installation
->>>>>>> 366c2b0 (split stories and lessons, add scripts)
